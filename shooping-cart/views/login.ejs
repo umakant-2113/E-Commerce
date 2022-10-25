@@ -1,0 +1,20 @@
+<!-- @format -->
+<% include partial/header %>
+<main class="height">
+  <section class="register-section flex align-center justify-center">
+    <div class="register-form-box flex-50">
+      <h1 class="secondary-heading text-center">login here</h1>
+      <form action="/users/login" method="post">
+        <% if(info){%>
+
+        <h2 class="info"><%= info%></h2>
+        <%}%>
+        <input type="text" name="email" placeholder="email" />
+        <input type="password" name="password" placeholder="password" />
+        <input type="submit" value="login" />
+      </form>
+    </div>
+  </section>
+</main>
+
+<% include partial/footer %>

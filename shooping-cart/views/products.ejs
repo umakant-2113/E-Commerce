@@ -1,0 +1,54 @@
+<!-- @format -->
+
+<% include partial/header %>
+
+<main class="height">
+  <%if(products.length>0){%>
+
+  <h2 class="secondary-heading text-center padding-tb">all products</h2>
+  <%}%>
+  <section class="user-dbh-section flex justify-between container">
+    <aside class="flex-20">
+      <div class="aside-heading">
+        <h2 class="secondary-heading text-center">all category</h2>
+      </div>
+
+      <ul class="flex flex-wrap-yes flex-100 align-center">
+        <%if(uniqueCategories.length>0){%> <% uniqueCategories.forEach(elm=>{%>
+
+        <li class="flex-100 text-center">
+          <a href="/products/<%=elm%>/category"><%=elm%></a>
+        </li>
+        <%})%>
+      </ul>
+      <%}%>
+    </aside>
+
+    <ul class="user-dbh-box flex flex-wrap-yes flex-75 justify-center">
+      <% if(products.length>0){%> <% products.forEach(elm=>{%>
+      <li class="flex-25">
+        <figure>
+          <img
+            class="full-width"
+            src="/images/<%=elm.image %>"
+            alt="product-img"
+          />
+        </figure>
+        <div class="product-detail-box">
+          <span><%= elm.name %></span> <br />
+
+          <span>price:₹ <%= elm.price %></span> <br />
+
+          <button class="btn btn-primary">
+            <a href="/products/<%= elm.id%>">details</a>
+          </button>
+        </div>
+      </li>
+      <% })%> <%}else{%>
+      <h2 class="secondary-heading text-center padding-tb">no products</h2>
+
+      <%}%>
+    </ul>
+  </section>
+</main>
+<% include partial/footer %>

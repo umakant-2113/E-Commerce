@@ -1,0 +1,83 @@
+<!-- @format -->
+
+<% include partial/header %>
+<main class="">
+  <section class="container prd-section">
+    <div class="prd-container flex">
+      <figure>
+        <img
+          class="full-width"
+          src="/images/<%=product.image%>"
+          alt="product-img"
+        />
+      </figure>
+      <div class="flex-30 align-self-center">
+        <p>
+          <h2 class="info"><%=info%></h2>
+          <span><%= product.name %> </span> <br />
+          <span>price: ₹<%= product.price %></span> <br />
+
+          <span>
+            <a class="like" href="/products/<%= product.id %>/like"
+              >👍 :<%= product.likes.length%></a
+            >
+          </span>
+          <span>
+            <a class="like" href="/products/<%= product.id %>/dislike"
+              >👎 :<%= product.dislikes.length%></a
+            >
+          </span>
+        </p>
+        <%if(user){%>
+
+       
+          
+           <%if(user.isAdmin){%>
+        <button class="btn btn-primary">
+          <a href="/products/<%= product.id %>/edit">edit</a>
+        </button>
+        <button class="btn btn-primary">
+          <a href="/products/<%= product.id %>/delete">delete</a>
+        </button>
+        <%}else{%>
+
+          <button class="btn btn-primary">
+            <a href="/products/<%= product.id %>/addCart">add to cart</a>
+          </button>
+          <button class="btn btn-primary">
+            <a href="/carts">buy now</a>
+          </button>
+
+           <% }%> 
+           <%}%>
+      </div>
+    </div>
+    <!-- comment -form -->
+    <div class="comment-box flex-30">
+      <h2 class="secondary-heading">comments</h2>
+      <form action="/products/<%=product.id %>/comment" method="post">
+        <textarea name="title" id="" cols="30" rows="3"></textarea>
+        <button type="submit">comment</button>
+      </form>
+      <%product.comments.forEach(cmt=>{%> <%if(user){%>
+      <p class="comment">
+        <span class="commenter"><%= cmt.commenter.name %>:<%=cmt.title %></span>
+        <br />
+        <span>
+          <a class="like" href="/comments/<%= cmt.id%>/like"
+            >👍:<%=cmt.likes.length%></a
+          >
+        </span>
+        <span
+          ><a class="like" href="/comments/<%= cmt.id %>/dislike">
+            👎:<%=cmt.dislikes.length %>
+          </a></span
+        >
+        <a class="edit-c" href="/comments/<%=cmt.id %>/edit">edit</a>
+        <a class="delete-c" href="/comments/<%= cmt.id %>/delete">delete</a>
+      </p>
+      <%}%> <%})%>
+    </div>
+  </section>
+</main>
+<% include partial/footer%>

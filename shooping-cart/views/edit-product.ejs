@@ -1,0 +1,53 @@
+<!-- @format -->
+
+<%include partial/header%>
+<main class="height">
+  <section class="flex justify-center">
+    <div class="add-product-box flex-40 text-center">
+      <h2 class="secondary-heading">update product</h2>
+
+      <form
+        action="/products/<%= product.id %>/edit"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <input
+          type="text"
+          name="name"
+          placeholder="product name"
+          value="<%= product.name%>"
+        />
+
+        <input
+          type="number"
+          name="price"
+          placeholder=" price"
+          value="<%= product.price %>"
+        />
+        <input
+          type="number"
+          name="quantity"
+          placeholder="quantity"
+          value="<%= product.quantity %>"
+        />
+        <select name="category" id="category">
+          <option value="none" selected , hidden , disabled>category</option>
+          <option value="clothe">clothe</option>
+          <option value="cosmetics">cosmetics</option>
+          <option value="electronics">electronics</option>
+          <option value="footwears">footwears</option>
+        </select>
+        <input type="file" name="image" />
+        <div style="width: 5rem; height: 5rem; margin-bottom: 0.5rem">
+          <img
+            class="full-width"
+            src="/images/<%= product.image %>"
+            alt="product-img"
+          />
+        </div>
+        <input type="submit" value="update" />
+      </form>
+    </div>
+  </section>
+</main>
+<% include partial/footer%>

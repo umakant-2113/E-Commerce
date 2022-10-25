@@ -1,0 +1,36 @@
+<!-- @format -->
+
+<% include partial/header %>
+<main class="height">
+  <section class="admin-dbh-section flex justify-between container">
+    <aside class="flex-20">
+      <div class="aside-heading">
+        <h2 class="secondary-heading text-center">all users</h2>
+      </div>
+
+      <ul class="flex flex-wrap-yes flex-100 align-center">
+        <%if(users.length>0){%> <% users.forEach(elm=>{%>
+
+        <li class="flex-100 text-center">
+          <span class="user-name"> <%= elm.name %></span>
+          <%if(elm.isBlock){%>
+          <button class="unblock">
+            <a href="/users/<%= elm.id %>/unblock">unblock </a>
+          </button>
+          <%}else{%>
+
+          <button class="block">
+            <a href="/users/<%= elm.id %>/block">block </a>
+          </button>
+          <%}%>
+        </li>
+        <%})%> <%}%>
+      </ul>
+    </aside>
+    <div class="admin-dbh-box flex flex-75 justify-center">
+      <h1 class="primary-heading">this is admin accessed</h1>
+    </div>
+  </section>
+</main>
+<script src="/javascripts/block-unblock.js"></script>
+<% include partial/footer%>

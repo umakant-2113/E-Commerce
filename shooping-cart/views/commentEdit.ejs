@@ -1,0 +1,20 @@
+<!-- @format -->
+
+<% include partial/header %>
+
+<main class="height">
+  <section class="padding-tb flex justify-center">
+    <div class="flex-50 comment-edit-box">
+      <h2 class="secondary-heading text-center">update comment</h2>
+      <form action="/comments/<%= comment.id %>/edit" method="post">
+        <textarea name="title" id="" cols="30" rows="10">
+ 
+            <%= comment.title %>
+        </textarea>
+        <input type="submit" value="update" />
+      </form>
+    </div>
+  </section>
+</main>
+
+<% include partial/footer %>

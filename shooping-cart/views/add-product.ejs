@@ -1,0 +1,26 @@
+<!-- @format -->
+
+<%include partial/header%>
+<main class="height">
+  <section class="flex justify-center">
+    <div class="add-product-box flex-40 text-center">
+      <h2 class="secondary-heading">add product</h2>
+
+      <form action="/products/new" method="post" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="product name" />
+        <input type="number" name="price" placeholder=" price" />
+        <input type="number" name="quantity" placeholder="quantity" />
+        <select name="category" id="category">
+          <option value="none" selected , hidden>category</option>
+          <option value="clothe">clothe</option>
+          <option value="cosmetics">cosmetics</option>
+          <option value="electronics">electronics</option>
+          <option value="footwears">footwears</option>
+        </select>
+        <input type="file" name="image" />
+        <input type="submit" value="add" />
+      </form>
+    </div>
+  </section>
+</main>
+<% include partial/footer%>

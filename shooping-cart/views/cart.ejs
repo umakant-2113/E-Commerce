@@ -1,0 +1,62 @@
+<!-- @format -->
+
+<% include partial/header%>
+<main class="height">
+  <section class="container padding-tb">
+    <h2 class="secondary-heading padding-tb">my cart</h2>
+
+    <table>
+      <tr>
+        <th>product name</th>
+        <th>product-image</th>
+        <th>quantity</th>
+        <th>₹ price</th>
+        <th>₹ sub Total</th>
+      </tr>
+
+      <% cartObj.productList.forEach(elm=>{%>
+
+      <tr>
+        <td><span class="p-name"><%=elm.productId.name %></span> <br /></td>
+        <td>
+          <div class="flex align-center justify-evenly">
+            <img
+              style="width: 5rem; height: 4rem"
+              src="/images/<%= elm.productId.image %>"
+              alt="product-img"
+            />
+
+            <div>
+              <button class="btn btn-secondary">
+                <a href="/carts/<%= elm.id %>/remove">remove</a>
+              </button>
+            </div>
+          </div>
+        </td>
+        <td>
+          <span class="p-qunt"><%=elm.quantity %></span> <br />
+          <button>
+            <a href="/carts/<%= elm.id %>/dec">-</a>
+          </button>
+          <button>
+            <a href="/carts/<%= elm.id %>/inc">+</a>
+          </button>
+        </td>
+        <td><%=elm.productId.price %></td>
+        <td><%= (elm.productId.price)*elm.quantity %></td>
+      </tr>
+
+      <%})%>
+    </table>
+
+    <div class="padding-tb total-amt-box">
+      <% var total= 0 %> <%cartObj.productList.forEach(p=>{%> <%
+      total+=(p.productId.price*p.quantity )%> <%})%>
+      <div>Total:₹<%= total %></div>
+      <button class="btn btn-secondary">
+        <a href="https://paytm.com/recharge-bill-payment">checkout</a>
+      </button>
+    </div>
+  </section>
+</main>
+<% include partial/footer %>

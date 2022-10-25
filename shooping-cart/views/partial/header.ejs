@@ -1,0 +1,64 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dash-board</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="container flex justify-between align-center">
+        <div class="logo">
+          <a href="/">shopping Cart</a>
+        </div>
+        <ul class="flex align-center align-content-center justify-between">
+          <li class="flex align-center">
+            <a href="/">home</a>
+          </li>
+          <li class="flex align-center">
+            <a href="/products">all products</a>
+          </li>
+
+          <%if(user){%> <%if(user.isAdmin){%>
+          <li class="flex align-center">
+            <a href="/products/new">add product</a>
+          </li>
+          <%}%>
+
+          <li class="flex align-center">
+            <a href="#">hello: <%=user.name%></a>
+          </li>
+
+          <li class="flex align-center">
+            <a href="/users/logout">logout</a>
+          </li>
+          <%if(user.isAdmin===false){%>
+          <li class="">
+            <a href="/carts">
+              <figure>
+                <span class="cart-count"><%=cartCount%></span>
+                <img
+                  class="full-width"
+                  src="https://cdn.pixabay.com/photo/2014/04/02/10/48/shopping-304640_960_720.png"
+                  alt="cart"
+                />
+              </figure>
+            </a>
+          </li>
+          <%}%> <% }else{%>
+          <li class="flex align-center">
+            <a href="/users/register">register</a>
+          </li>
+          <li class="flex align-center">
+            <a href="/users/login">login</a>
+          </li>
+          <%}%>
+        </ul>
+      </nav>
+    </header>
+  </body>
+</html>
